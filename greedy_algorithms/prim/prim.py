@@ -89,7 +89,7 @@ def main():
         [0, 0, 0, 3, 7, 0]
     ]
 
-    g = readGraph("../challenge15.9.txt")
+    g = readGraph("../../challenge15.9.txt")
     start = time.time()
     res = prim_with_array_of_weights_implementation(g)
     end = time.time()

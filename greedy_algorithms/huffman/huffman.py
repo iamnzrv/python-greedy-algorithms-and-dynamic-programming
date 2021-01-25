@@ -136,7 +136,7 @@ def get_max_depth(node, depth):
 def main():
     p_arr = []
     alphabet_arr = []
-    f = open("../challenge14.6.txt", "r")
+    f = open("../../challenge14.6.txt", "r")
     numOfCases = int(f.readline())
     for i in range(0, numOfCases):
         line = f.readline()

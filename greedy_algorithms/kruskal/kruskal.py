@@ -51,7 +51,7 @@ def kruskal(adjacency_lists, size):
 
 
 def main():
-    read_data = read_adjacency_lists("../challenge15.9.txt")
+    read_data = read_adjacency_lists("../../challenge15.9.txt")
     adjacency_lists = read_data[1]
     size = read_data[0]
     start = time.time()
