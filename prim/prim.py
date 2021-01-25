@@ -28,6 +28,7 @@ def prim_with_array_of_weights_implementation(graph):
         visited[i] = True
     return parents
 
+
 def prim_with_heap_of_weights_implementation(graph):
     heap = []
     heapify(heap)
@@ -60,40 +61,47 @@ def getWay(g, parents):
     return my_sum
 
 
-test_graph = [
-    [0, 4, 6, 0, 0, 0],
-    [4, 0, 6, 3, 4, 0],
-    [6, 6, 0, 1, 0, 0],
-    [0, 3, 1, 0, 2, 3],
-    [0, 4, 0, 2, 0, 7],
-    [0, 0, 0, 3, 7, 0]
-]
+def readGraph(path):
+    g = []
+    f = open(path, "r")
+    limits = f.readline().rstrip().split(" ")
+    size = int(limits[0])
+    for i in range(size):
+        g.append([])
+        for j in range(size):
+            g[i].append(0)
 
-g = []
+    for i in range(0, int(limits[1])):
+        line = f.readline()
+        data = list(map(lambda x: int(x), line.rstrip().split(" ")))
+        g[data[0] - 1][data[1] - 1] = data[2]
+        g[data[1] - 1][data[0] - 1] = data[2]
+    return g
 
-f = open("../challenge15.9.txt", "r")
-limits = f.readline().rstrip().split(" ")
-size = int(limits[0])
-for i in range(size):
-    g.append([])
-    for j in range(size):
-        g[i].append(0)
 
-for i in range(0, int(limits[1])):
-    line = f.readline()
-    data = list(map(lambda x: int(x), line.rstrip().split(" ")))
-    g[data[0] - 1][data[1] - 1] = data[2]
-    g[data[1] - 1][data[0] - 1] = data[2]
+def main():
+    test_graph = [
+        [0, 4, 6, 0, 0, 0],
+        [4, 0, 6, 3, 4, 0],
+        [6, 6, 0, 1, 0, 0],
+        [0, 3, 1, 0, 2, 3],
+        [0, 4, 0, 2, 0, 7],
+        [0, 0, 0, 3, 7, 0]
+    ]
 
-start = time.time()
-res = prim_with_array_of_weights_implementation(g)
-end = time.time()
-print(res)
-print(getWay(g, res))
-print("Array implementation of Prim algorithm elapsed for " + str((end - start) * 1000) + "ms")
-start = time.time()
-res = prim_with_heap_of_weights_implementation(g)
-end = time.time()
-print(res)
-print(getWay(g, res))
-print("Heap implementation of Prim algorithm elapsed for " + str((end - start) * 1000) + "ms")
+    g = readGraph("../challenge15.9.txt")
+    start = time.time()
+    res = prim_with_array_of_weights_implementation(g)
+    end = time.time()
+    print(res)
+    print(getWay(g, res))
+    print("Array implementation of Prim algorithm elapsed for " + str((end - start) * 1000) + "ms")
+    start = time.time()
+    res = prim_with_heap_of_weights_implementation(g)
+    end = time.time()
+    print(res)
+    print(getWay(g, res))
+    print("Heap implementation of Prim algorithm elapsed for " + str((end - start) * 1000) + "ms")
+
+
+main()

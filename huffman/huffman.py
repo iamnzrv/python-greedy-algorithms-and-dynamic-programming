@@ -1,8 +1,7 @@
 import heapq
-from collections import deque
-from heapq import heapify, heappush, heappop
-import queue
 import time
+from collections import deque
+from heapq import heappush, heappop
 
 
 class TreeNode(object):
@@ -134,25 +133,26 @@ def get_max_depth(node, depth):
         return max(get_max_depth(node.left, depth + 1), get_max_depth(node.right, depth + 1))
 
 
-p_arr = []
-alphabet_arr = []
-f = open("../challenge14.6.txt", "r")
-numOfCases = int(f.readline())
-for i in range(0, numOfCases):
-    line = f.readline()
-    job_data = line.rstrip()
-    p_arr.append(int(line.rstrip()))
-    alphabet_arr.append(None)
+def main():
+    p_arr = []
+    alphabet_arr = []
+    f = open("../challenge14.6.txt", "r")
+    numOfCases = int(f.readline())
+    for i in range(0, numOfCases):
+        line = f.readline()
+        job_data = line.rstrip()
+        p_arr.append(int(line.rstrip()))
+        alphabet_arr.append(None)
 
-start1 = time.time()
-tree1 = encode_huffman_tree_using_sort(alphabet_arr, p_arr)
-end1 = time.time()
-tree1.display()
-start2 = time.time()
-tree2 = encode_huffman_tree_using_heap(alphabet_arr, p_arr)
-end2 = time.time()
-tree2.display()
-print("Sort implementation elapsed for: " + str((end1 - start1) * 1000) + "ms")
-print("Heap implementation elapsed for: " + str((end2 - start2) * 1000) + "ms")
-print("Min length of a codeword is: " + str(get_min_depth(tree1, 0)))
-print("Max length of a codeword is: " + str(get_max_depth(tree1, 0)))
+    start1 = time.time()
+    tree1 = encode_huffman_tree_using_sort(alphabet_arr, p_arr)
+    end1 = time.time()
+    tree1.display()
+    start2 = time.time()
+    tree2 = encode_huffman_tree_using_heap(alphabet_arr, p_arr)
+    end2 = time.time()
+    tree2.display()
+    print("Sort implementation elapsed for: " + str((end1 - start1) * 1000) + "ms")
+    print("Heap implementation elapsed for: " + str((end2 - start2) * 1000) + "ms")
+    print("Min length of a codeword is: " + str(get_min_depth(tree1, 0)))
+    print("Max length of a codeword is: " + str(get_max_depth(tree1, 0)))

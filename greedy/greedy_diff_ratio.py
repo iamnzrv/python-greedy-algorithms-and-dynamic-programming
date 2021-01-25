@@ -17,13 +17,14 @@ def print_sum_end_time(jobs, comparator):
     print(sum_end_time)
 
 
-read_jobs = []
-f = open("challenge13.4.txt", "r")
-numOfCases = int(f.readline())
-for i in range(0, numOfCases):
-    line = f.readline()
-    job_data = list(map(lambda x: int(x), line.rstrip().split(" ")))
-    read_jobs.append(Job(job_data[0], job_data[1]))
+def main():
+    read_jobs = []
+    f = open("challenge13.4.txt", "r")
+    numOfCases = int(f.readline())
+    for i in range(0, numOfCases):
+        line = f.readline()
+        job_data = list(map(lambda x: int(x), line.rstrip().split(" ")))
+        read_jobs.append(Job(job_data[0], job_data[1]))
 
-print_sum_end_time(read_jobs, lambda x: x.weight - x.length)  # greedy diff
-print_sum_end_time(read_jobs, lambda x: x.weight / x.length)  # greedy ratio
+    print_sum_end_time(read_jobs, lambda x: x.weight - x.length)  # greedy diff
+    print_sum_end_time(read_jobs, lambda x: x.weight / x.length)  # greedy ratio
