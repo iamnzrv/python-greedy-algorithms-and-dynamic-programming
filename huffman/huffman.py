@@ -156,3 +156,5 @@ def main():
     print("Heap implementation elapsed for: " + str((end2 - start2) * 1000) + "ms")
     print("Min length of a codeword is: " + str(get_min_depth(tree1, 0)))
     print("Max length of a codeword is: " + str(get_max_depth(tree1, 0)))
+
+main()

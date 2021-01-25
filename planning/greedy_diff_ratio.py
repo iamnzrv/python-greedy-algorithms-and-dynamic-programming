@@ -19,7 +19,7 @@ def print_sum_end_time(jobs, comparator):
 
 def main():
     read_jobs = []
-    f = open("challenge13.4.txt", "r")
+    f = open("../challenge13.4.txt", "r")
     numOfCases = int(f.readline())
     for i in range(0, numOfCases):
         line = f.readline()
@@ -28,3 +28,6 @@ def main():
 
     print_sum_end_time(read_jobs, lambda x: x.weight - x.length)  # greedy diff
     print_sum_end_time(read_jobs, lambda x: x.weight / x.length)  # greedy ratio
+
+
+main()
