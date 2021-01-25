@@ -19,7 +19,7 @@ def print_sum_end_time(jobs, comparator):
 
 def main():
     read_jobs = []
-    f = open("../../challenge13.4.txt", "r")
+    f = open("../challenge13.4.txt", "r")
     numOfCases = int(f.readline())
     for i in range(0, numOfCases):
         line = f.readline()
